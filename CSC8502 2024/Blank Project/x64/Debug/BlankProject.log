@@ -1,0 +1,6 @@
+﻿  BlankProject.cpp
+  Renderer.cpp
+E:\CSC8502 2022\Blank Project\Renderer.cpp(4,19): error C2039: 'GenerateTriangle': is not a member of 'Mesh'
+E:\CSC8502 2022\NCLGL\Mesh.h(42): message : see declaration of 'Mesh'
+E:\CSC8502 2022\Blank Project\Renderer.cpp(4,35): error C3861: 'GenerateTriangle': identifier not found
+  Generating Code...
