@@ -10,7 +10,7 @@ int main()	{
 	
 	Renderer renderer(w);
 	if(!renderer.HasInitialised()) {
-		return -1;
+		// return -1;
 	}
 
 	while(w.UpdateWindow()  && !Window::GetKeyboard()->KeyDown(KEYBOARD_ESCAPE)){
