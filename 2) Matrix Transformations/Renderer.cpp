@@ -8,6 +8,8 @@ Renderer::Renderer(Window & parent) : OGLRenderer(parent) {
 	if (!matrixShader->LoadSuccess()) { return;	}
 	
 	init = true;
+
+	camera = new Camera();
 	
 	SwitchToOrthographic();
 }
@@ -15,6 +17,7 @@ Renderer::Renderer(Window & parent) : OGLRenderer(parent) {
 Renderer::~Renderer(void) {
 	delete triangle;
 	delete matrixShader;
+	delete camera;
 }
 
 void Renderer::SwitchToPerspective() {
@@ -52,5 +55,10 @@ void Renderer::RenderScene() {
 							1, false, modelMatrix.values);
 		triangle->Draw();
 	}
+}
+
+void Renderer::UpdateScene(float dt) {
+	camera->UpdateCamera(dt);
+	viewMatrix = camera->BuildViewMatrix();
 }
 

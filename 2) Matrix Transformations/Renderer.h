@@ -15,10 +15,13 @@ public:
 	inline void SetRotation(float r)	{ rotation = r; }
 	inline void SetPosition(Vector3 p)	{ position = p; }
 
+	virtual void UpdateScene(float dt);
+
 protected:
 	Mesh*		triangle;
 	Shader*		matrixShader;
 	float		scale;
 	float		rotation;
 	Vector3		position;
+	Camera*		camera;
 };

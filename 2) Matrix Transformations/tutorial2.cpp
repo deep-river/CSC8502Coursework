@@ -42,10 +42,19 @@ int main() {
 			position.z -= 1.0f;
 		if (Window::GetKeyboard()->KeyDown(KEYBOARD_P))
 			position.z += 1.0f;
+		if (Window::GetKeyboard()->KeyDown(KEYBOARD_R)) {
+			scale = 100.0f;
+			rotation = 0.0f;
+			position.x = 0.0f;
+			position.y = 0.0f;
+			position.z = -1500.0f;
+		}
 
 		renderer.SetRotation(rotation);
 		renderer.SetScale(scale);
 		renderer.SetPosition(position);
+
+		renderer.UpdateScene(w.GetTimer()->GetTimeDeltaSeconds());
 		renderer.RenderScene();
 		renderer.SwapBuffers();
 	}
