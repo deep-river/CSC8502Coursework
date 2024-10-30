@@ -81,6 +81,7 @@ protected:
 	int		height;			//Render area height (not quite the same as window height)
 	bool	init;			//Did the renderer initialise properly?
 
+	void SetTextureRepeating(GLuint target, bool state);
 private:
 	Shader* currentShader;	
 	HDC		deviceContext;	//...Device context?
