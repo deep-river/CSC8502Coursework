@@ -85,6 +85,8 @@ public:
 
 	static Mesh* GenerateTriangle();
 
+	static Mesh* GenerateQuad();
+
 protected:
 	void	BufferData();
 

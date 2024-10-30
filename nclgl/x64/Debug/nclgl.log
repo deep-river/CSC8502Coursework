@@ -1,1 +1,8 @@
-﻿  nclgl.vcxproj -> C:\Dev\CSC8502Coursework\x64\Debug\nclgl.lib
+﻿  Camera.cpp
+  ComputeShader.cpp
+  Mesh.cpp
+  OGLRenderer.cpp
+  Shader.cpp
+  Window.cpp
+  正在生成代码...
+  nclgl.vcxproj -> C:\Dev\CSC8502Coursework\x64\Debug\nclgl.lib
