@@ -1,2 +1,10 @@
-﻿  tutorial5.cpp
-E:\CSC8502 2022\5) Stencils & Scissors\tutorial5.cpp(2,10): fatal error C1083: Cannot open include file: 'Renderer.h': No such file or directory
+﻿  Renderer.cpp
+C:\Dev\CSC8502Coursework\5) Stencils & Scissors\Renderer.cpp(51,41): warning C4244: “参数”: 从“float”转换到“GLsizei”，可能丢失数据
+C:\Dev\CSC8502Coursework\5) Stencils & Scissors\Renderer.cpp(51,19): warning C4244: “参数”: 从“float”转换到“GLsizei”，可能丢失数据
+C:\Dev\CSC8502Coursework\5) Stencils & Scissors\Renderer.cpp(50,48): warning C4244: “参数”: 从“float”转换到“GLint”，可能丢失数据
+C:\Dev\CSC8502Coursework\5) Stencils & Scissors\Renderer.cpp(50,26): warning C4244: “参数”: 从“float”转换到“GLint”，可能丢失数据
+nclgl.lib(SOIL.obj) : warning LNK4099: 未找到 PDB“”(使用“nclgl.lib(SOIL.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+nclgl.lib(stb_image_aug.obj) : warning LNK4099: 未找到 PDB“”(使用“nclgl.lib(stb_image_aug.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+nclgl.lib(image_helper.obj) : warning LNK4099: 未找到 PDB“”(使用“nclgl.lib(image_helper.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+nclgl.lib(image_DXT.obj) : warning LNK4099: 未找到 PDB“”(使用“nclgl.lib(image_DXT.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+  Tutorial5.vcxproj -> C:\Dev\CSC8502Coursework\x64\Debug\Tutorial 05 - Scissors and Stencils.exe
