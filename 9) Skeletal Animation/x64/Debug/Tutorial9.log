@@ -1,2 +1,9 @@
-﻿  Tutorial9.cpp
-E:\CSC8502 2022\9) Skeletal Animation\Tutorial9.cpp(2,10): fatal error C1083: Cannot open include file: 'Renderer.h': No such file or directory
+﻿  Renderer.cpp
+  Tutorial9.cpp
+C:\Dev\CSC8502Coursework\9) Skeletal Animation\Renderer.cpp(74,42): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+  正在生成代码...
+nclgl.lib(SOIL.obj) : warning LNK4099: 未找到 PDB“”(使用“nclgl.lib(SOIL.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+nclgl.lib(stb_image_aug.obj) : warning LNK4099: 未找到 PDB“”(使用“nclgl.lib(stb_image_aug.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+nclgl.lib(image_helper.obj) : warning LNK4099: 未找到 PDB“”(使用“nclgl.lib(image_helper.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+nclgl.lib(image_DXT.obj) : warning LNK4099: 未找到 PDB“”(使用“nclgl.lib(image_DXT.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+  Tutorial9.vcxproj -> C:\Dev\CSC8502Coursework\x64\Debug\Tutorial 09 - Skeletal Animation.exe
