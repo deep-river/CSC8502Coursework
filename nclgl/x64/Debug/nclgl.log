@@ -1,4 +1,6 @@
 ﻿  CubeRobot.cpp
+  Frustum.cpp
+  Plane.cpp
   SceneNode.cpp
   正在生成代码...
   nclgl.vcxproj -> C:\Dev\CSC8502Coursework\x64\Debug\nclgl.lib
