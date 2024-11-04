@@ -1,6 +1,10 @@
 ﻿  CubeRobot.cpp
   Frustum.cpp
+  HeightMap.cpp
   Plane.cpp
-  SceneNode.cpp
+C:\Dev\CSC8502Coursework\nclgl\HeightMap.cpp(25,48): warning C4244: “参数”: 从“int”转换到“const float”，可能丢失数据
+C:\Dev\CSC8502Coursework\nclgl\HeightMap.cpp(25,31): warning C4244: “参数”: 从“int”转换到“const float”，可能丢失数据
+C:\Dev\CSC8502Coursework\nclgl\HeightMap.cpp(26,39): warning C4244: “参数”: 从“int”转换到“const float”，可能丢失数据
+C:\Dev\CSC8502Coursework\nclgl\HeightMap.cpp(26,36): warning C4244: “参数”: 从“int”转换到“const float”，可能丢失数据
   正在生成代码...
   nclgl.vcxproj -> C:\Dev\CSC8502Coursework\x64\Debug\nclgl.lib
