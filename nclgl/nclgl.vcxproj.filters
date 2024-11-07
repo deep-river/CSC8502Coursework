@@ -87,6 +87,7 @@
     <ClInclude Include="Plane.h" />
     <ClInclude Include="Frustum.h" />
     <ClInclude Include="HeightMap.h" />
+    <ClInclude Include="Light.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GLAD">

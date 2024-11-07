@@ -36,6 +36,7 @@ _-_-_-_-_-_-_-""  ""
 #include "Shader.h"
 #include "Mesh.h"
 #include "Camera.h"
+#include "Light.h"
 
 using std::vector;
 
@@ -44,7 +45,7 @@ using std::vector;
 extern const Matrix4 biasMatrix;
 
 class Shader;
-class Light;
+// class Light;
 
 class OGLRenderer	{
 public:
@@ -82,6 +83,8 @@ protected:
 	bool	init;			//Did the renderer initialise properly?
 
 	void SetTextureRepeating(GLuint target, bool state);
+
+	void SetShaderLight(const Light &l);
 private:
 	Shader* currentShader;	
 	HDC		deviceContext;	//...Device context?
