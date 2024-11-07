@@ -512,3 +512,62 @@ void Mesh::GenerateNormals() {
 		normals[i].Normalise();
 	}
 }
+
+void Mesh::GenerateTangents() {
+	if (!textureCoords) {
+		return;
+	}
+	if (!tangents) {
+		tangents = new Vector4[numVertices];
+	}
+	for (GLuint i = 0; i < numVertices; ++i) {
+		tangents[i] = Vector4(0, 0, 0, 0);
+	}
+
+	int triCount = GetTriCount();
+
+	for (int i = 0; i < triCount; ++i) {
+		unsigned int a = 0;
+		unsigned int b = 0;
+		unsigned int c = 0;
+		GetVertexIndicesForTri(i, a, b, c);
+		Vector4 tangent = GenerateTangent(a, b, c);
+		tangents[a] += tangent;
+		tangents[b] += tangent;
+		tangents[c] += tangent;
+	}
+
+	for (GLuint i = 0; i < numVertices; ++i) {
+		float handedness = tangents[i].w > 0.0f ? 1.0f : -1.0f;
+		tangents[i].w = 0.0f;
+		tangents[i].Normalise();
+		tangents[i].w = handedness;
+	}
+}
+
+Vector4 Mesh::GenerateTangent(int a, int b, int c) {
+	Vector3 ba = vertices[b] - vertices[a];
+	Vector3 ca = vertices[c] - vertices[a];
+
+	Vector2 tba = textureCoords[b] - textureCoords[a];
+	Vector2 tca = textureCoords[c] - textureCoords[a];
+
+	Matrix2 texMatrix = Matrix2(tba, tca);
+	texMatrix.Invert();
+
+	Vector3 tangent;
+	Vector3 binormal;
+
+	tangent = ba * texMatrix.values[0] + ca * texMatrix.values[1];
+	binormal = ba * texMatrix.values[2] + ca * texMatrix.values[3];
+
+	Vector3 normal = Vector3::Cross(ba, ca);
+	Vector3 biCross = Vector3::Cross(tangent, normal);
+
+	float handedness = 1.0f;
+	if (Vector3::Dot(biCross, binormal) < 0.0f) {
+		handedness = -1.0f;
+	}
+
+	return Vector4(tangent.x, tangent.y, tangent.z, handedness);
+}

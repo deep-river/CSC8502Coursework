@@ -9,12 +9,18 @@ Renderer::Renderer(Window& parent) : OGLRenderer(parent) {
 		TEXTUREDIR"Barren Reds.JPG", SOIL_LOAD_AUTO,
 		SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
 
-	shader = new Shader("PerPixelVertex.glsl", "PerPixelFragment.glsl");
+	bumpmap = SOIL_load_OGL_texture(
+		TEXTUREDIR"Barren RedsDOT3.JPG", SOIL_LOAD_AUTO,
+		SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
 
-	if (!shader->LoadSuccess() || !texture) {
+	// shader = new Shader("PerPixelVertex.glsl", "PerPixelFragment.glsl");
+	shader = new Shader("BumpVertex.glsl", "BumpFragment.glsl");
+
+	if (!shader->LoadSuccess() || !texture || !bumpmap) {
 		return;
 	}
 	SetTextureRepeating(texture, true);
+	SetTextureRepeating(bumpmap, true);
 
 	Vector3 heightmapSize = heightMap->GetHeightmapSize();
 	camera = new Camera(-45.0f, 0.0f,
@@ -51,6 +57,11 @@ void Renderer::RenderScene() {
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture);
+
+	glUniform1i(glGetUniformLocation(
+			shader->GetProgram(), "bumpTex"), 1);
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, bumpmap);
 
 	glUniform3fv(glGetUniformLocation(shader->GetProgram(),
 			"cameraPos"), 1, (float*)&camera->GetPosition());
