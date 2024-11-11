@@ -10,7 +10,7 @@ in vec3 normal;
 in vec2 texCoord;
 
 out Vertex {
-    vec3 colour;
+    vec4 colour;
     vec2 texCoord;
     vec3 normal;
     vec3 worldPos;

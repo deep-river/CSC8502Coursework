@@ -1,14 +1,17 @@
 #include "../nclgl/window.h"
 #include "Renderer.h"
+#include "conio.h"
 
 int main() {
 	Window w("Cube Mapping!", 1280, 720,false);
 	if(!w.HasInitialised()) {
+		_getch();
 		return -1;
 	}
 	
 	Renderer renderer(w);
 	if(!renderer.HasInitialised()) {
+		_getch();
 		return -1;
 	}
 
