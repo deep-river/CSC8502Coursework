@@ -16,6 +16,8 @@ public:
 
 	void RenderScene() override;
 	void UpdateScene(float dt) override;
+
+	void TogglePostProcessing();
 	
 protected:
 	void BuildNodeLists(SceneNode* from);
@@ -54,4 +56,6 @@ protected:
 	
 	float		waterRotate;
 	float		waterCycle;
+
+	bool		postProcessingSwitch;
 };

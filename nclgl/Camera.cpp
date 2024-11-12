@@ -23,7 +23,7 @@ void Camera::UpdateCamera(float dt) {
 
 	// To make the speed of movement framerate independent, 
 	// we're going to calculate a speed variable of 30 units per second.
-	float speed			= 30.0f * dt; 
+	float speed			= 600.0f * dt; 
 
 	if (Window::GetKeyboard()->KeyDown(KEYBOARD_W)) {
 		position += forward * speed;

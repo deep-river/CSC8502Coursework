@@ -76,6 +76,8 @@ Renderer::Renderer(Window& parent) : OGLRenderer(parent) {
 	waterRotate = 0.0f;
 	waterCycle = 0.0f;
 	init = true;
+
+	postProcessingSwitch = false;
 }
 
 Renderer::~Renderer(void) {
@@ -248,4 +250,8 @@ void Renderer::DrawWater() {
 	UpdateShaderMatrices();
 
 	quad->Draw();
+}
+
+void Renderer::TogglePostProcessing() {
+	postProcessingSwitch = !postProcessingSwitch;
 }
