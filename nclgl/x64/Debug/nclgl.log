@@ -1,3 +1,2 @@
 ﻿  WaterNode.cpp
-C:\Dev\CSC8502Coursework\nclgl\WaterNode.cpp(10,12): warning C4305: “*=”: 从“double”到“float”截断
   nclgl.vcxproj -> C:\Dev\CSC8502Coursework\x64\Debug\nclgl.lib

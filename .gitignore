@@ -410,3 +410,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+Meshes/MeshExporter Deploy/obj
+Meshes/MeshExporter Deploy/Temp
+Meshes/MeshExporter Deploy/Library

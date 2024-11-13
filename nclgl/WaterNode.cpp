@@ -7,7 +7,7 @@ WaterNode::WaterNode(Shader* shader, GLuint tex, Mesh* mesh,
 
 	this->cubemap = cubemap;
 	this->size = size;
-	size.y *= 0.37;
+	size.y *= 0.75f; // adjust water level
 
 	transform = Matrix4::Translation(size * 0.5f) *
 				Matrix4::Scale(size * 0.5f) *
@@ -27,7 +27,7 @@ void WaterNode::Draw(const OGLRenderer& r) {
 	glBindTexture(GL_TEXTURE_CUBE_MAP, cubemap);
 
 	textureMatrix = Matrix4::Translation(Vector3(waterCycle, 0.0f, waterCycle)) *
-					Matrix4::Scale(Vector3(150, 150, 150)) *
+					Matrix4::Scale(Vector3(10, 10, 10)) *
 					Matrix4::Rotation(waterRotate, Vector3(0, 0, 1));
 
 	glUniformMatrix4fv(glGetUniformLocation(shader->GetProgram(), 

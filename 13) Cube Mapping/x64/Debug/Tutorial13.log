@@ -1,2 +1,5 @@
-﻿  Renderer.cpp
+﻿  Tutorial13.cpp
+C:\Dev\CSC8502Coursework\13) Cube Mapping\Tutorial13.cpp(3,10): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+nclgl.lib(image_helper.obj) : warning LNK4099: 未找到 PDB“”(使用“nclgl.lib(image_helper.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+nclgl.lib(image_DXT.obj) : warning LNK4099: 未找到 PDB“”(使用“nclgl.lib(image_DXT.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
   Tutorial13.vcxproj -> C:\Dev\CSC8502Coursework\x64\Debug\Tutorial 13 - Cube Mapping.exe

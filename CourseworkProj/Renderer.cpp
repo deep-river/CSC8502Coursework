@@ -42,8 +42,6 @@ Renderer::Renderer(Window& parent) : OGLRenderer(parent) {
 			"reflectVertex.glsl", "reflectFragment.glsl");
 	skyboxShader = new Shader(
 			"skyboxVertex.glsl", "skyboxFragment.glsl");
-	/*lightShader = new Shader(
-	 		"BumpVertex.glsl", "BumpFragment.glsl");*/
 	lightShader = new Shader(
 		"PerPixelVertex.glsl", "PerPixelFragment.glsl");
 	
@@ -63,7 +61,6 @@ Renderer::Renderer(Window& parent) : OGLRenderer(parent) {
 	projMatrix = Matrix4::Perspective(1.0f, 15000.0f,
 			(float)width / (float)height, 45.0f);
 
-	cube = Mesh::LoadFromMeshFile("OffsetCubeY.msh");
 	// build SceneNodes
 	root = new SceneNode();
 
@@ -179,7 +176,6 @@ void Renderer::RenderScene() {
 	DrawSkybox();
 	//DrawHeightmap();
 	//DrawWater();
-
 	DrawNodes();
 	ClearNodeLists();
 }
