@@ -8,10 +8,9 @@ public:
     
 	virtual void Draw(const OGLRenderer& r);
 
-	Shader* GetShader() const { return shader; }
+	// Shader* GetShader() const { return shader; }
 
 protected:
-    Shader* shader;
     void    UpdateShaderMatrices();
     void    LoadTexture();
 };

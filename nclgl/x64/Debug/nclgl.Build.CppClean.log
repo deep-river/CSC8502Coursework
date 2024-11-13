@@ -21,6 +21,8 @@ c:\dev\csc8502coursework\nclgl\x64\debug\frustum.obj
 c:\dev\csc8502coursework\nclgl\x64\debug\cuberobot.obj
 c:\dev\csc8502coursework\nclgl\x64\debug\computeshader.obj
 c:\dev\csc8502coursework\nclgl\x64\debug\camera.obj
+c:\dev\csc8502coursework\nclgl\x64\debug\terrain.obj
+c:\dev\csc8502coursework\nclgl\x64\debug\shadedscenenode.obj
 c:\dev\csc8502coursework\x64\debug\nclgl.lib
 c:\dev\csc8502coursework\nclgl\x64\debug\nclgl.tlog\cl.command.1.tlog
 c:\dev\csc8502coursework\nclgl\x64\debug\nclgl.tlog\cl.items.tlog

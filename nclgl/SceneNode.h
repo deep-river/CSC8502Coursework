@@ -49,6 +49,8 @@ public:
 			true : false;
 	}
 
+	Shader* GetShader() const { return shader; }
+
 protected:
 	SceneNode*	parent;
 	Mesh*		mesh;
@@ -61,5 +63,6 @@ protected:
 	float		distanceFromCamera; // used for sorting by distance
 	float		boundingRadius; // used for frustum culling
 	GLuint		texture;
+	Shader*		shader;
 };
 

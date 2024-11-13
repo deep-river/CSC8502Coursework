@@ -4,7 +4,8 @@
 #include "../nclgl/Shader.h"
 #include "../nclgl/Camera.h"
 #include <algorithm>
-#include "../nclgl/CubeRobot.h"
+#include "../nclgl/TerrainNode.h"
+#include "../nclgl/WaterNode.h"
 
 Renderer::Renderer(Window& parent) : OGLRenderer(parent) {
 	quad = Mesh::GenerateQuad();
@@ -41,15 +42,14 @@ Renderer::Renderer(Window& parent) : OGLRenderer(parent) {
 			"reflectVertex.glsl", "reflectFragment.glsl");
 	skyboxShader = new Shader(
 			"skyboxVertex.glsl", "skyboxFragment.glsl");
+	/*lightShader = new Shader(
+	 		"BumpVertex.glsl", "BumpFragment.glsl");*/
 	lightShader = new Shader(
-			"PerPixelVertex.glsl", "PerPixelFragment.glsl");
-	SceneNodeShader = new Shader(
-		"SceneVertex.glsl", "SceneFragment.glsl");
+		"PerPixelVertex.glsl", "PerPixelFragment.glsl");
 	
 	if (!reflectShader->LoadSuccess() ||
 		!skyboxShader->LoadSuccess() ||
-		!lightShader->LoadSuccess() ||
-		!SceneNodeShader->LoadSuccess()) {
+		!lightShader->LoadSuccess()) {
 		return;
 	}
 
@@ -58,7 +58,7 @@ Renderer::Renderer(Window& parent) : OGLRenderer(parent) {
 	camera = new Camera(-45.0f, 0.0f,
 			heightmapSize * Vector3(0.5f, 5.0f, 0.5f));
 	light = new Light(heightmapSize * Vector3(0.5f, 1.5f, 0.5f),
-			Vector4(1, 1, 1, 1), heightmapSize.x);
+			Vector4(1, 1, 1, 1), heightmapSize.x * 0.5f);
 
 	projMatrix = Matrix4::Perspective(1.0f, 15000.0f,
 			(float)width / (float)height, 45.0f);
@@ -66,8 +66,11 @@ Renderer::Renderer(Window& parent) : OGLRenderer(parent) {
 	cube = Mesh::LoadFromMeshFile("OffsetCubeY.msh");
 	// build SceneNodes
 	root = new SceneNode();
-	// todo: add scene elements into SceneNode(skybox, heightmap, water)
-	root->AddChild(new CubeRobot(cube));
+
+	root->AddChild(new TerrainNode(lightShader, camera, heightMap,
+											earthTex, earthBump));
+	root->AddChild(new WaterNode(reflectShader, waterTex, quad, 
+											cubeMap, heightmapSize));
 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
@@ -96,9 +99,6 @@ void Renderer::UpdateScene(float dt) {
 	camera->UpdateCamera(dt);
 	viewMatrix = camera->BuildViewMatrix();
 
-	waterRotate += dt * 2.0f;
-	waterCycle += dt * 0.25f;
-
 	// culling and NodeScene update
 	frameFrustum.FromMatrix(projMatrix * viewMatrix);
 	root->Update(dt);
@@ -106,7 +106,7 @@ void Renderer::UpdateScene(float dt) {
 
 void Renderer::BuildNodeLists(SceneNode* from) {
 	// check whether node is inside the frustum
-	if (frameFrustum.InsideFrustum(*from)) {
+	if (frameFrustum.InsideFrustum(*from) || from->GetMesh()) {
 		Vector3 dir = from->GetWorldTransform().GetPositionVector()
 			- camera->GetPosition();
 		from->SetCameraDistance(Vector3::Dot(dir, dir));
@@ -154,34 +154,33 @@ void Renderer::DrawNodes() {
 //todo: DrawSkybox, DrawHeightmap, DrawWater here.
 void Renderer::DrawNode(SceneNode* n) {
 	if (n->GetMesh()) {
-		Matrix4 model = n->GetWorldTransform() *
-			Matrix4::Scale(n->GetModelScale());
-		glUniformMatrix4fv(glGetUniformLocation(SceneNodeShader->GetProgram(),
-			"modelMatrix"), 1, false, model.values);
-		glUniform4fv(glGetUniformLocation(SceneNodeShader->GetProgram(),
-			"nodeColour"), 1, (float*)&n->GetColour());
+		Shader* shader = n->GetShader();
+		if (shader) {
+			BindShader(shader);
+			SetShaderLight(*light);
+			glUniform3fv(glGetUniformLocation(shader->GetProgram(),
+					"cameraPos"), 1, (float*)&camera->GetPosition());
 
-		SceneNodeTexture = n->GetTexture();
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, SceneNodeTexture);
+			UpdateShaderMatrices();
 
-		glUniform1i(glGetUniformLocation(SceneNodeShader->GetProgram(),
-			"useTexture"), SceneNodeTexture);
 
-		n->Draw(*this);
+
+			n->Draw(*this);
+		}
 	}
 }
 
 void Renderer::RenderScene() {
+
 	BuildNodeLists(root);
 	SortNodeLists();
 
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 	DrawSkybox();
-	DrawHeightmap();
-	DrawWater();
+	//DrawHeightmap();
+	//DrawWater();
 
-	// DrawNodes();
+	DrawNodes();
 	ClearNodeLists();
 }
 

@@ -39,6 +39,8 @@
     <ClCompile Include="Frustum.cpp" />
     <ClCompile Include="HeightMap.cpp" />
     <ClCompile Include="ShadedSceneNode.cpp" />
+    <ClCompile Include="TerrainNode.cpp" />
+    <ClCompile Include="WaterNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h" />
@@ -90,6 +92,8 @@
     <ClInclude Include="HeightMap.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="ShadedSceneNode.h" />
+    <ClInclude Include="TerrainNode.h" />
+    <ClInclude Include="WaterNode.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GLAD">

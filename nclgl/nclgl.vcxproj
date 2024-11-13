@@ -40,6 +40,8 @@
     <ClCompile Include="SceneNode.cpp" />
     <ClCompile Include="ShadedSceneNode.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="TerrainNode.cpp" />
+    <ClCompile Include="WaterNode.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -66,9 +68,11 @@
     <ClInclude Include="SceneNode.h" />
     <ClInclude Include="ShadedSceneNode.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="TerrainNode.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector4.h" />
+    <ClInclude Include="WaterNode.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -14,7 +14,8 @@ void ShadedSceneNode::Draw(const OGLRenderer& r) {
 }
 
 void ShadedSceneNode::UpdateShaderMatrices() {
-	glUniformMatrix4fv(glGetUniformLocation(shader->GetProgram(), "modelMatrix"), 1, false, transform.values);
+	glUniformMatrix4fv(glGetUniformLocation(shader->GetProgram(), 
+						"modelMatrix"), 1, false, transform.values);
 }
 
 void ShadedSceneNode::LoadTexture() {
