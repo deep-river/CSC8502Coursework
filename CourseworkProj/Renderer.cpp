@@ -10,7 +10,7 @@
 Renderer::Renderer(Window& parent) : OGLRenderer(parent) {
 	quad = Mesh::GenerateQuad();
 
-	heightMap = new HeightMap(TEXTUREDIR"noise.png");
+	heightMap = new HeightMap(TEXTUREDIR"snowdon.png");
 
 	waterTex = SOIL_load_OGL_texture(
 			TEXTUREDIR"water.TGA", SOIL_LOAD_AUTO,
@@ -54,8 +54,8 @@ Renderer::Renderer(Window& parent) : OGLRenderer(parent) {
 	Vector3 heightmapSize = heightMap->GetHeightmapSize();
 
 	camera = new Camera(-45.0f, 0.0f,
-			heightmapSize * Vector3(0.5f, 5.0f, 0.5f));
-	light = new Light(heightmapSize * Vector3(0.5f, 1.5f, 0.5f),
+			heightmapSize * Vector3(0.5f, 2.0f, 0.5f));
+	light = new Light(heightmapSize * Vector3(0.5f, 2.0f, 0.5f),
 			Vector4(1, 1, 1, 1), heightmapSize.x * 0.5f);
 
 	projMatrix = Matrix4::Perspective(1.0f, 15000.0f,

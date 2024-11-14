@@ -7,7 +7,7 @@ WaterNode::WaterNode(Shader* shader, GLuint tex, Mesh* mesh,
 
 	this->cubemap = cubemap;
 	this->size = size;
-	size.y *= 0.75f; // adjust water level
+	size.y *= 0.5f; // adjust water level
 
 	transform = Matrix4::Translation(size * 0.5f) *
 				Matrix4::Scale(size * 0.5f) *
