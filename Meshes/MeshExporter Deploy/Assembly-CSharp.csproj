@@ -57,6 +57,7 @@
   <ItemGroup>
      <Compile Include="Assets\MeshExporter.cs" />
      <None Include="Assets\Resources\RealisticCharacter\Shader\Rim_Diffuse.shader" />
+     <None Include="Assets\Resources\NexoITCH\README.txt" />
      <None Include="Assets\Resources\Stylized Nature MegaKit[Standard]\License_Standard.txt" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

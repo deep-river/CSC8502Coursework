@@ -6,8 +6,10 @@
 class Camera;
 class Shader;
 class HeightMap;
-class SceneNode;
 class Mesh;
+class MeshMaterial;
+class MeshAnimation;
+class SceneNode;
 
 class Renderer : public OGLRenderer {
 public:
@@ -40,6 +42,7 @@ protected:
 	Shader *	reflectShader;
 	Shader *	skyboxShader;
 	Shader *	SceneNodeShader;
+	Shader *	staticShader;
 	
 	HeightMap * heightMap;
 	Mesh *		quad;
@@ -53,9 +56,30 @@ protected:
 	GLuint		earthTex;
 	GLuint		earthBump;
 	GLuint		SceneNodeTexture;
+
+	Mesh*			biomeMesh;
+	MeshAnimation*	biomeAnim;
+	MeshMaterial*	biomeMaterial;
+
+	Mesh*			dynamicObjMesh;
+	MeshAnimation*	dynamicObjAnim;
+	MeshMaterial*	dynamicObjMaterial;
+
+	Shader*		meshShader;
+	Shader*		animMeshShader;
 	
 	float		waterRotate;
 	float		waterCycle;
 
+	void PresentScene();
+	void DrawPostProcess();
+
 	bool		postProcessingSwitch;
+	Shader*		processShader;
+	Shader*		sceneShader;
+	Mesh*		postquad;
+	GLuint		bufferFBO;
+	GLuint		processFBO;
+	GLuint		bufferColourTex[2];
+	GLuint		bufferDepthTex;
 };

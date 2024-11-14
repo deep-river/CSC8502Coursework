@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Third Party\glad\glad.c" />
+    <ClCompile Include="AnimObjNode.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ComputeShader.cpp" />
     <ClCompile Include="CubeRobot.cpp" />
@@ -40,11 +41,13 @@
     <ClCompile Include="SceneNode.cpp" />
     <ClCompile Include="ShadedSceneNode.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="StaticMeshNode.cpp" />
     <ClCompile Include="TerrainNode.cpp" />
     <ClCompile Include="WaterNode.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnimObjNode.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="ComputeShader.h" />
@@ -68,6 +71,7 @@
     <ClInclude Include="SceneNode.h" />
     <ClInclude Include="ShadedSceneNode.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="StaticMeshNode.h" />
     <ClInclude Include="TerrainNode.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />

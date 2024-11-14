@@ -1,8 +1,3 @@
 ﻿  Renderer.cpp
-  Tutorial9.cpp
 C:\Dev\CSC8502Coursework\9) Skeletal Animation\Renderer.cpp(74,42): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
-  正在生成代码...
-nclgl.lib(stb_image_aug.obj) : warning LNK4099: 未找到 PDB“”(使用“nclgl.lib(stb_image_aug.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-nclgl.lib(image_helper.obj) : warning LNK4099: 未找到 PDB“”(使用“nclgl.lib(image_helper.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-nclgl.lib(image_DXT.obj) : warning LNK4099: 未找到 PDB“”(使用“nclgl.lib(image_DXT.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
   Tutorial9.vcxproj -> C:\Dev\CSC8502Coursework\x64\Debug\Tutorial 09 - Skeletal Animation.exe

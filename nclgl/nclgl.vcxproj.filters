@@ -41,6 +41,8 @@
     <ClCompile Include="ShadedSceneNode.cpp" />
     <ClCompile Include="TerrainNode.cpp" />
     <ClCompile Include="WaterNode.cpp" />
+    <ClCompile Include="AnimObjNode.cpp" />
+    <ClCompile Include="StaticMeshNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h" />
@@ -94,6 +96,8 @@
     <ClInclude Include="ShadedSceneNode.h" />
     <ClInclude Include="TerrainNode.h" />
     <ClInclude Include="WaterNode.h" />
+    <ClInclude Include="AnimObjNode.h" />
+    <ClInclude Include="StaticMeshNode.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GLAD">
