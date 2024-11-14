@@ -1,2 +1,14 @@
-﻿  StaticMeshNode.cpp
+﻿  AnimObjNode.cpp
+  CubeRobot.cpp
+C:\Dev\CSC8502Coursework\nclgl\AnimObjNode.cpp(64,42): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+  Frustum.cpp
+  MatSceneNode.cpp
+  Mesh.cpp
+  SceneNode.cpp
+  ShadedSceneNode.cpp
+  StaticMeshNode.cpp
+  TerrainNode.cpp
+  WaterNode.cpp
+  Window.cpp
+  正在生成代码...
   nclgl.vcxproj -> C:\Dev\CSC8502Coursework\x64\Debug\nclgl.lib

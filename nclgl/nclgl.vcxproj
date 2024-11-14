@@ -31,6 +31,7 @@
     <ClCompile Include="Matrix2.cpp" />
     <ClCompile Include="Matrix3.cpp" />
     <ClCompile Include="Matrix4.cpp" />
+    <ClCompile Include="MatSceneNode.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="MeshAnimation.cpp" />
     <ClCompile Include="MeshMaterial.cpp" />
@@ -61,6 +62,7 @@
     <ClInclude Include="Matrix2.h" />
     <ClInclude Include="Matrix3.h" />
     <ClInclude Include="Matrix4.h" />
+    <ClInclude Include="MatSceneNode.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshAnimation.h" />
     <ClInclude Include="MeshMaterial.h" />

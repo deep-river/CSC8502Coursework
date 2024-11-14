@@ -1,8 +1,10 @@
 #include "SceneNode.h"
 
-SceneNode::SceneNode(Mesh* mesh, Vector4 colour) {
+SceneNode::SceneNode(Mesh* mesh, Vector4 colour, Shader* s) {
 	this->mesh		= mesh;
 	this->colour	= colour;
+	if (s) { this->shader = s; }
+
 	parent			= NULL;
 	modelScale		= Vector3(1, 1, 1);
 

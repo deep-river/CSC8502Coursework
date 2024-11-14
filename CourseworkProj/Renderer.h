@@ -82,4 +82,8 @@ protected:
 	GLuint		processFBO;
 	GLuint		bufferColourTex[2];
 	GLuint		bufferDepthTex;
+
+	void LoadTextures();
+	void LoadShaders();
+	void LoadMeshes();
 };

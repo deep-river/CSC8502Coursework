@@ -16,71 +16,9 @@ Renderer::Renderer(Window& parent) : OGLRenderer(parent) {
 	quad = Mesh::GenerateQuad();
 	postquad = Mesh::GenerateQuad();
 
-	heightMap = new HeightMap(TEXTUREDIR"snowdon.png");
-
-	waterTex = SOIL_load_OGL_texture(
-			TEXTUREDIR"water.TGA", SOIL_LOAD_AUTO,
-			SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
-
-	earthTex = SOIL_load_OGL_texture(
-			TEXTUREDIR"brown_gravel_terrain.png", SOIL_LOAD_AUTO,
-			SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
-		
-	earthBump = SOIL_load_OGL_texture(
-			TEXTUREDIR"brown_gravel_terrain_NormalMap.png", SOIL_LOAD_AUTO,
-			SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
-		
-	cubeMap = SOIL_load_OGL_cubemap(
-			TEXTUREDIR"rusted_west.jpg", TEXTUREDIR"rusted_east.jpg",
-			TEXTUREDIR"rusted_up.jpg", TEXTUREDIR"rusted_down.jpg",
-			TEXTUREDIR"rusted_south.jpg", TEXTUREDIR"rusted_north.jpg",
-			SOIL_LOAD_RGB, SOIL_CREATE_NEW_ID, 0);
-		
-	if (!earthTex || !earthBump || !cubeMap || !waterTex) {
-		return;
-	}
-
-	SetTextureRepeating(earthTex, true);
-	SetTextureRepeating(earthBump, true);
-	SetTextureRepeating(waterTex, true);
-
-	reflectShader = new Shader(
-			"reflectVertex.glsl", "reflectFragment.glsl");
-	skyboxShader = new Shader(
-			"skyboxVertex.glsl", "skyboxFragment.glsl");
-	lightShader = new Shader(
-			"PerPixelVertex.glsl", "PerPixelFragment.glsl");
-	/*lightShader = new Shader(
-			"TerrainVertex.glsl", "TerrainFragment.glsl");*/
-	animMeshShader = new Shader(
-			"SkinningVertex.glsl", "TexturedFragment.glsl");
-	meshShader = new Shader(
-			"PerPixelVertex.glsl", "PerPixelFragment.glsl");
-	sceneShader = new Shader(
-			"TexturedVertex.glsl", "TexturedFragment.glsl");
-	processShader = new Shader(
-			"TexturedVertex.glsl", "processfrag.glsl");
-	
-	if (!reflectShader->LoadSuccess() ||
-		!skyboxShader->LoadSuccess() ||
-		!lightShader->LoadSuccess() ||
-		!meshShader->LoadSuccess() ||
-		!animMeshShader->LoadSuccess() ||
-		!sceneShader->LoadSuccess() ||
-		!processShader->LoadSuccess()) {
-		return;
-	}
-
-	/*biomeMesh = Mesh::LoadFromMeshFile("tree-maple-low-poly-Anim.msh");
-	biomeMaterial = new MeshMaterial("tree-maple-low-poly-Anim.mat");*/
-	
-	biomeMesh = Mesh::LoadFromMeshFile("CommonTree_4.msh");
-	biomeMaterial = new MeshMaterial("CommonTree_4.mat");
-
-	dynamicObjMesh = Mesh::LoadFromMeshFile("Role_T.msh");
-	dynamicObjAnim = new MeshAnimation("Role_T.anm");
-	dynamicObjMaterial = new MeshMaterial("Role_T.mat");
-
+	LoadTextures();
+	LoadShaders();
+	LoadMeshes();
 
 	Vector3 heightmapSize = heightMap->GetHeightmapSize();
 
@@ -173,6 +111,77 @@ Renderer::~Renderer(void) {
 	glDeleteTextures(1, &bufferDepthTex);
 	glDeleteFramebuffers(1, &bufferFBO);
 	glDeleteFramebuffers(1, &processFBO);
+}
+
+void Renderer::LoadTextures() {
+	heightMap = new HeightMap(TEXTUREDIR"snowdon.png");
+
+	waterTex = SOIL_load_OGL_texture(
+		TEXTUREDIR"water.TGA", SOIL_LOAD_AUTO,
+		SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
+
+	earthTex = SOIL_load_OGL_texture(
+		TEXTUREDIR"brown_gravel_terrain.png", SOIL_LOAD_AUTO,
+		SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
+
+	earthBump = SOIL_load_OGL_texture(
+		TEXTUREDIR"brown_gravel_terrain_NormalMap.png", SOIL_LOAD_AUTO,
+		SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
+
+	cubeMap = SOIL_load_OGL_cubemap(
+		TEXTUREDIR"rusted_west.jpg", TEXTUREDIR"rusted_east.jpg",
+		TEXTUREDIR"rusted_up.jpg", TEXTUREDIR"rusted_down.jpg",
+		TEXTUREDIR"rusted_south.jpg", TEXTUREDIR"rusted_north.jpg",
+		SOIL_LOAD_RGB, SOIL_CREATE_NEW_ID, 0);
+
+	if (!earthTex || !earthBump || !cubeMap || !waterTex) {
+		return;
+	}
+
+	SetTextureRepeating(earthTex, true);
+	SetTextureRepeating(earthBump, true);
+	SetTextureRepeating(waterTex, true);
+}
+
+void Renderer::LoadShaders() {
+	reflectShader = new Shader(
+		"reflectVertex.glsl", "reflectFragment.glsl");
+	skyboxShader = new Shader(
+		"skyboxVertex.glsl", "skyboxFragment.glsl");
+	lightShader = new Shader(
+		"PerPixelVertex.glsl", "PerPixelFragment.glsl");
+	/*lightShader = new Shader(
+			"TerrainVertex.glsl", "TerrainFragment.glsl");*/
+	animMeshShader = new Shader(
+		"SkinningVertex.glsl", "TexturedFragment.glsl");
+	meshShader = new Shader(
+		"PerPixelVertex.glsl", "PerPixelFragment.glsl");
+	sceneShader = new Shader(
+		"TexturedVertex.glsl", "TexturedFragment.glsl");
+	processShader = new Shader(
+		"TexturedVertex.glsl", "processfrag.glsl");
+
+	if (!reflectShader->LoadSuccess() ||
+		!skyboxShader->LoadSuccess() ||
+		!lightShader->LoadSuccess() ||
+		!meshShader->LoadSuccess() ||
+		!animMeshShader->LoadSuccess() ||
+		!sceneShader->LoadSuccess() ||
+		!processShader->LoadSuccess()) {
+		return;
+	}
+}
+
+void Renderer::LoadMeshes() {
+	biomeMesh = Mesh::LoadFromMeshFile("tree-maple-low-poly-Anim.msh");
+	biomeMaterial = new MeshMaterial("tree-maple-low-poly-Anim.mat");
+
+	/*biomeMesh = Mesh::LoadFromMeshFile("CommonTree_4.msh");
+	biomeMaterial = new MeshMaterial("CommonTree_4.mat");*/
+
+	dynamicObjMesh = Mesh::LoadFromMeshFile("Role_T.msh");
+	dynamicObjAnim = new MeshAnimation("Role_T.anm");
+	dynamicObjMaterial = new MeshMaterial("Role_T.mat");
 }
 
 void Renderer::UpdateScene(float dt) {

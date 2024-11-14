@@ -43,6 +43,7 @@
     <ClCompile Include="WaterNode.cpp" />
     <ClCompile Include="AnimObjNode.cpp" />
     <ClCompile Include="StaticMeshNode.cpp" />
+    <ClCompile Include="MatSceneNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h" />
@@ -98,6 +99,7 @@
     <ClInclude Include="WaterNode.h" />
     <ClInclude Include="AnimObjNode.h" />
     <ClInclude Include="StaticMeshNode.h" />
+    <ClInclude Include="MatSceneNode.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GLAD">
