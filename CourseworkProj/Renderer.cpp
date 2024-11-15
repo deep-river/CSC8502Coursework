@@ -37,10 +37,10 @@ Renderer::Renderer(Window& parent) : OGLRenderer(parent) {
 											earthTex, earthBump));
 	root->AddChild(new WaterNode(reflectShader, waterTex, quad, 
 											cubeMap, heightmapSize));
-	root->AddChild(new StaticMeshNode(meshShader, biomeMesh, biomeMaterial,
-			Vector3(2800.0f, 320.0f, 2800.0f), 25.0f, 0.0f));
+	/*root->AddChild(new StaticMeshNode(meshShader, biomeMesh, biomeMaterial,
+			Vector3(2800.0f, 320.0f, 2800.0f), 25.0f, 0.0f));*/
 	root->AddChild(new AnimObjNode(animMeshShader, dynamicObjMesh, dynamicObjAnim, dynamicObjMaterial,
-			Vector3(2000.0f, 320.0f, 2800.0f), 100.0f, 0.0f, true));
+			Vector3(2000.0f, 320.0f, 2800.0f), 80.0f, 0.0f, true));
 
 
 	glGenTextures(1, &bufferDepthTex);
@@ -103,7 +103,6 @@ Renderer::~Renderer(void) {
 	delete lightShader;
 	delete light;
 
-	delete biomeAnim;
 	delete biomeMaterial;
 	delete meshShader;
 
@@ -150,8 +149,8 @@ void Renderer::LoadShaders() {
 		"skyboxVertex.glsl", "skyboxFragment.glsl");
 	lightShader = new Shader(
 		"PerPixelVertex.glsl", "PerPixelFragment.glsl");
-	/*lightShader = new Shader(
-			"TerrainVertex.glsl", "TerrainFragment.glsl");*/
+	terrainShader = new Shader(
+			"BumpVertex.glsl", "TerrainFragment.glsl");
 	animMeshShader = new Shader(
 		"SkinningVertex.glsl", "TexturedFragment.glsl");
 	meshShader = new Shader(

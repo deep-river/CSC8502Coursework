@@ -40,6 +40,7 @@ protected:
 	
 	Shader *	lightShader;
 	Shader *	reflectShader;
+	Shader *	terrainShader;
 	Shader *	skyboxShader;
 	Shader *	SceneNodeShader;
 	Shader *	staticShader;
